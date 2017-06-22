@@ -1,0 +1,37 @@
+<div class="col-xs-10 col-xs-offset-1 list-group">
+  <ul class="list-unstyled">
+    <li ng-repeat="violation in report.violations | orderBy:'impact':false:impactLevel"
+      ng-click="state=!state"
+      class="list-group-item" ng-class="report.setColor(violation);">
+      {{ violation.help }}
+      <span class="pull-right text-right">
+        <a ng-href="{{ violation.helpUrl }}">Reference</a>
+      </span>
+      <div ng-if="state">
+        <div ng-repeat="node in violation.nodes" class="well well-sm"
+          ng-class="report.setBGColor(node)">
+          <div class="row">
+            <div class="col-xs-12"><strong>{{ node.message }}</strong></div>
+            <div class="col-xs-8">{{ node.target }}</div>
+            <div class="col-xs-4 text-right"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <table ng-if="state" class="table table-hover">
+        <thead>
+          <tr>
+            <th class="col-xs-3">Target</th>
+            <th class="col-xs-9">Message</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="node in violation.nodes">
+            <td>{{ node.target }}</td>
+            <td>{{ node.any[0].message }}</td>
+          </tr>
+        </tbody>
+      </table> -->
+    </li>
+  </ul>
+</div>
