@@ -29,41 +29,43 @@
     });
 
     _this.setColor = function(violation) {
-      var color = 'text-';
+      var textcolor = 'text-';
       switch (violation.impact) {
         case 'critical':
-          color += 'danger';
+          textcolor += 'danger';
           break;
         case 'serious':
-          color += 'warning';
+          textcolor += 'warning';
           break;
         case 'moderate':
-          color += 'info';
+          textcolor += 'info';
           break;
         case 'minor':
-          color += 'success';
+          textcolor += 'success';
           break;
       }
-      return color;
+      console.log(textcolor);
+      return textcolor;
     }
 
     _this.setBGColor = function(node) {
-      var color = 'bg-';
+      var bgcolor = 'list-group-item-';
       switch (node.impact) {
         case 'critical':
-          color += 'danger';
+          bgcolor += 'danger';
           break;
         case 'serious':
-          color += 'warning';
+          bgcolor += 'warning';
           break;
         case 'moderate':
-          color += 'info';
+          bgcolor += 'info';
           break;
         case 'minor':
-          color += 'success';
+          bgcolor += 'success';
           break;
       }
-      return color;
+      console.log(bgcolor);
+      return bgcolor;
     }
   }
 
@@ -87,7 +89,7 @@
     _this.getResults = function() {
       var response = $http({
         method: 'GET',
-        url: ('https://raw.githubusercontent.com/kimberlythegeek/axe_selenium_python/master/axe_selenium_python/tests/examples/example-results.json')
+        url: ('src/example-results.json')
       });
       return response;
     };
