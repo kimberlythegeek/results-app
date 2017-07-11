@@ -1,0 +1,27 @@
+<div class="col-xs-10 col-xs-offset-1 list-group">
+  <ul class="list-unstyled">
+    <li ng-repeat="violation in report.violations | orderBy:'impact':false:impactLevel"
+      ng-click="state=!state"
+      class="list-group-item" ng-class="report.setColor(violation);">
+      <i class="fa fa-exclamation-triangle"></i>{{ violation.help }}
+        <a ng-href="{{ violation.helpUrl }}">
+          <i class="fa fa-external-link"></i>
+        </a>
+        <div class="badge">{{ (violation.nodes).length }}</div>
+      <div ng-if="state">
+        <ul class="list-group">
+          <li ng-repeat="node in violation.nodes" class="row list-group-item" ng-class="report.setBGColor(node);">
+            <div ng-if="(node.all).length > 0">Fix all:</div>
+            <div ng-repeat="all in node.all" class="col-xs-12"><strong>{{ all.message }}</strong></div>
+            <div ng-if="(node.any).length > 0">Fix any:</div>
+            <div ng-repeat="any in node.any" class="col-xs-12"><strong>{{ any.message }}</strong></div>
+            <div ng-if="(node.none).length > 0">Fix none:</div>
+            <div ng-repeat="none in node.none" class="col-xs-12"><strong>{{ none.message }}</strong></div>
+            <div class="col-xs-8">{{ node.target }}</div>
+            <div class="col-xs-4 text-right"></div>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>

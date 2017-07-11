@@ -4,7 +4,7 @@
   angular.module('AccessibilityReport',[])
   .controller('ReportController', ReportController)
   .directive('results', results)
-  .directive('resultsTable', resultsTable)
+  .directive('resultsList', resultsList)
   .service('ResultsService', ResultsService);
 
   ReportController.$inject = ['$scope', 'ResultsService'];
@@ -68,17 +68,11 @@
       return bgcolor;
     }
   }
-
-  function results() {
-    return {
-      templateUrl: 'src/results.template.html'
-    };
-  }
-
-  function resultsTable() {
+  
+  function resultsList() {
     return {
       restrict: 'E',
-      templateUrl: 'src/resultstable.template.html'
+      templateUrl: 'src/resultslist.template.html'
     };
   }
 
